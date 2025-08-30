@@ -30,7 +30,8 @@ export default function Collection() {
     if (team !== "All" && p.team !== team) return false;
     const query = q.trim().toLowerCase();
     if (query) {
-      const hay = `${p.name} ${p.team} ${p.role} ${p.tier} ${p.rating}`.toLowerCase();
+      const hay =
+        `${p.name} ${p.team} ${p.role} ${p.tier} ${p.rating}`.toLowerCase();
       if (!hay.includes(query)) return false;
     }
     return true;
@@ -47,7 +48,9 @@ export default function Collection() {
             placeholder="Search by name, team, tier, rating..."
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            onKeyDown={(e) => { if (e.key === "Escape") setQ(""); }}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setQ("");
+            }}
             autoComplete="off"
             className="bg-white/5 border-white/10"
           />
