@@ -1,0 +1,1 @@
+Cricket Packs — a cinematic React pack-opening game. Open Bronze/Silver/Gold packs, flip-reveal cricket stars with odds-based RNG, rare glow/confetti, sounds, and saved collection.
