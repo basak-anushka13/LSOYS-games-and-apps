@@ -61,7 +61,10 @@ function HomeInner() {
 
   const handleOpen = (type: PackType) => {
     const res = openPack(type);
-    if (!res) return; // insufficient coins
+    if (!res) {
+      import("sonner").then(({ toast }) => toast.error("Not enough coins"));
+      return;
+    }
     setOpening(res);
     setSummaryOpen(false);
     setFireConfetti(false);
