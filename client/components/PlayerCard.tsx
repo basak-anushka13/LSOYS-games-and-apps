@@ -34,7 +34,7 @@ export function PlayerCard({ player, revealed, rarePulse = false }: { player: Pl
   const t = tierStyles[player.tier];
 
   return (
-    <div className="relative w-40 h-64 sm:w-48 sm:h-72 perspective-1000">
+    <div className="relative w-40 h-64 sm:w-48 sm:h-72" style={{ perspective: "1000px" }}>
       <motion.div
         className={cn("relative size-full rounded-xl overflow-hidden [transform-style:preserve-3d]", t.glow)}
         animate={{ rotateY: revealed ? 0 : 180 }}
