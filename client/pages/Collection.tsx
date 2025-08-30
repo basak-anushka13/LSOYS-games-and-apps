@@ -43,9 +43,12 @@ export default function Collection() {
         <h1 className="text-3xl font-extrabold">My Collection</h1>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-4 gap-3">
           <Input
-            placeholder="Search by name, team..."
+            type="search"
+            placeholder="Search by name, team, tier, rating..."
             value={q}
             onChange={(e) => setQ(e.target.value)}
+            onKeyDown={(e) => { if (e.key === "Escape") setQ(""); }}
+            autoComplete="off"
             className="bg-white/5 border-white/10"
           />
           <Select onValueChange={(v) => setTier(v)}>
