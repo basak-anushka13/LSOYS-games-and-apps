@@ -56,7 +56,10 @@ export function PlayerCard({
         )}
         animate={{ rotateY: revealed ? 0 : 180 }}
         initial={{ rotateY: 180 }}
-        transition={{ duration: rarePulse ? 0.9 : 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+        transition={{
+          duration: rarePulse ? 0.9 : 0.6,
+          ease: [0.2, 0.8, 0.2, 1],
+        }}
       >
         {/* Front */}
         <div

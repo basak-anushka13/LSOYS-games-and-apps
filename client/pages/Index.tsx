@@ -111,10 +111,28 @@ function HomeInner() {
     setFireConfetti(false);
     setSpark(true);
     if (!muted) {
-      const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
-      const o = ctx.createOscillator(); const g = ctx.createGain();
-      o.type = "triangle"; o.frequency.value = 200; g.gain.value = 0.05; o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.2);
-      setTimeout(() => { const o2 = ctx.createOscillator(); const g2 = ctx.createGain(); o2.type = "sine"; o2.frequency.value = 1200; g2.gain.value = 0.03; o2.connect(g2); g2.connect(ctx.destination); o2.start(); o2.stop(ctx.currentTime + 0.08); }, 160);
+      const ctx = new (window.AudioContext ||
+        (window as any).webkitAudioContext)();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = "triangle";
+      o.frequency.value = 200;
+      g.gain.value = 0.05;
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start();
+      o.stop(ctx.currentTime + 0.2);
+      setTimeout(() => {
+        const o2 = ctx.createOscillator();
+        const g2 = ctx.createGain();
+        o2.type = "sine";
+        o2.frequency.value = 1200;
+        g2.gain.value = 0.03;
+        o2.connect(g2);
+        g2.connect(ctx.destination);
+        o2.start();
+        o2.stop(ctx.currentTime + 0.08);
+      }, 160);
     }
     setTimeout(() => {
       const res = openPack(type);
@@ -172,15 +190,22 @@ function HomeInner() {
             {spark && <SparkBurst fire={true} />}
             <motion.div
               initial={{ scale: 0.9, rotateZ: 0 }}
-              animate={{ scale: [0.98, 1.02, 1], rotateZ: [0, -2, 2, -1, 1, 0] }}
+              animate={{
+                scale: [0.98, 1.02, 1],
+                rotateZ: [0, -2, 2, -1, 1, 0],
+              }}
               transition={{ duration: 0.9, ease: "easeInOut" }}
               className="w-[320px] h-[180px] rounded-3xl ring-2 ring-yellow-300/80 bg-gradient-to-br from-yellow-200 via-amber-400 to-orange-700 shadow-[0_0_80px_rgba(251,191,36,0.7)] relative overflow-hidden"
             >
               <div className="absolute inset-0 opacity-30 blur-2xl bg-[conic-gradient(from_0deg,white_0deg,transparent_120deg)]" />
               <div className="relative h-full w-full grid place-items-center">
                 <div className="text-center">
-                  <div className="text-xs tracking-widest text-black/70">OPENING</div>
-                  <div className="text-2xl font-extrabold text-black drop-shadow">{prePack} Pack</div>
+                  <div className="text-xs tracking-widest text-black/70">
+                    OPENING
+                  </div>
+                  <div className="text-2xl font-extrabold text-black drop-shadow">
+                    {prePack} Pack
+                  </div>
                 </div>
               </div>
             </motion.div>
