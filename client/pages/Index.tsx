@@ -3,7 +3,8 @@ import { GameProvider, useGame } from "@/context/GameContext";
 import { PackTile } from "@/components/PackTile";
 import { PlayerCard } from "@/components/PlayerCard";
 import { Confetti } from "@/components/Confetti";
-import { PackType, Player } from "@/lib/rng";
+import { SparkBurst } from "@/components/SparkBurst";
+import { PackType, Player, PACK_DEFS } from "@/lib/rng";
 import {
   Dialog,
   DialogContent,
@@ -12,6 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 function Beep({ play, when }: { play: boolean; when: number }) {
   useEffect(() => {
