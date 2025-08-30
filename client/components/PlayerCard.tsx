@@ -3,7 +3,10 @@ import { Player, Tier } from "@/lib/rng";
 import React from "react";
 import { cn } from "@/lib/utils";
 
-const tierStyles: Record<Tier, { bg: string; ring: string; glow: string; label: string }> = {
+const tierStyles: Record<
+  Tier,
+  { bg: string; ring: string; glow: string; label: string }
+> = {
   Common: {
     bg: "bg-gradient-to-br from-slate-700 to-slate-900",
     ring: "ring-1 ring-slate-400/40",
@@ -30,19 +33,40 @@ const tierStyles: Record<Tier, { bg: string; ring: string; glow: string; label: 
   },
 };
 
-export function PlayerCard({ player, revealed, rarePulse = false }: { player: Player; revealed: boolean; rarePulse?: boolean }) {
+export function PlayerCard({
+  player,
+  revealed,
+  rarePulse = false,
+}: {
+  player: Player;
+  revealed: boolean;
+  rarePulse?: boolean;
+}) {
   const t = tierStyles[player.tier];
 
   return (
-    <div className="relative w-40 h-64 sm:w-48 sm:h-72" style={{ perspective: "1000px" }}>
+    <div
+      className="relative w-40 h-64 sm:w-48 sm:h-72"
+      style={{ perspective: "1000px" }}
+    >
       <motion.div
-        className={cn("relative size-full rounded-xl overflow-hidden [transform-style:preserve-3d]", t.glow)}
+        className={cn(
+          "relative size-full rounded-xl overflow-hidden [transform-style:preserve-3d]",
+          t.glow,
+        )}
         animate={{ rotateY: revealed ? 0 : 180 }}
         initial={{ rotateY: 180 }}
         transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
       >
         {/* Front */}
-        <div className={cn("absolute inset-0 rounded-xl p-3 sm:p-4 flex flex-col", t.bg, t.ring)} style={{ backfaceVisibility: "hidden" }}>
+        <div
+          className={cn(
+            "absolute inset-0 rounded-xl p-3 sm:p-4 flex flex-col",
+            t.bg,
+            t.ring,
+          )}
+          style={{ backfaceVisibility: "hidden" }}
+        >
           <div className="absolute inset-0 pointer-events-none" aria-hidden>
             <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top,white,transparent_60%)]" />
             {player.tier !== "Common" && (
@@ -50,33 +74,66 @@ export function PlayerCard({ player, revealed, rarePulse = false }: { player: Pl
             )}
           </div>
           <div className="text-xs font-semibold tracking-widest mb-1">
-            <span className={cn("inline-block px-2 py-0.5 rounded-full bg-gradient-to-r", t.label)}>{player.tier}</span>
+            <span
+              className={cn(
+                "inline-block px-2 py-0.5 rounded-full bg-gradient-to-r",
+                t.label,
+              )}
+            >
+              {player.tier}
+            </span>
           </div>
           <div className="flex-1 flex items-center justify-center">
             {player.photo ? (
-              <img src={player.photo} alt={player.name} className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full border-2 border-white/40 shadow-inner" />
+              <img
+                src={player.photo}
+                alt={player.name}
+                className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full border-2 border-white/40 shadow-inner"
+              />
             ) : (
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white/10 border border-white/20" />
             )}
           </div>
           <div className="space-y-1">
-            <div className="text-lg sm:text-xl font-extrabold leading-tight">{player.name}</div>
+            <div className="text-lg sm:text-xl font-extrabold leading-tight">
+              {player.name}
+            </div>
             <div className="text-[10px] sm:text-xs text-white/80 uppercase tracking-wider flex items-center gap-2">
-              <span className="px-1.5 py-0.5 rounded bg-black/30 border border-white/20">{player.role}</span>
+              <span className="px-1.5 py-0.5 rounded bg-black/30 border border-white/20">
+                {player.role}
+              </span>
               <span>{player.team}</span>
-              <span className="ml-auto text-white/90 font-black text-lg">{player.rating}</span>
+              <span className="ml-auto text-white/90 font-black text-lg">
+                {player.rating}
+              </span>
             </div>
             <div className="grid grid-cols-3 gap-1 text-[10px] sm:text-xs text-white/80">
-              <div className="bg-black/25 rounded px-1.5 py-1">AVG {player.stats.batting_avg}</div>
-              <div className="bg-black/25 rounded px-1.5 py-1">SR {player.stats.strike_rate}</div>
-              <div className="bg-black/25 rounded px-1.5 py-1">ECN {player.stats.bowling_econ}</div>
+              <div className="bg-black/25 rounded px-1.5 py-1">
+                AVG {player.stats.batting_avg}
+              </div>
+              <div className="bg-black/25 rounded px-1.5 py-1">
+                SR {player.stats.strike_rate}
+              </div>
+              <div className="bg-black/25 rounded px-1.5 py-1">
+                ECN {player.stats.bowling_econ}
+              </div>
             </div>
           </div>
         </div>
         {/* Back */}
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-neutral-800 to-black ring-2 ring-neutral-600 grid place-items-center" style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden" }}>
-          <div className={cn("text-center select-none", rarePulse && "animate-pulse")}> 
-            <div className="text-[11px] tracking-widest text-neutral-300">CRICKET</div>
+        <div
+          className="absolute inset-0 rounded-xl bg-gradient-to-br from-neutral-800 to-black ring-2 ring-neutral-600 grid place-items-center"
+          style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden" }}
+        >
+          <div
+            className={cn(
+              "text-center select-none",
+              rarePulse && "animate-pulse",
+            )}
+          >
+            <div className="text-[11px] tracking-widest text-neutral-300">
+              CRICKET
+            </div>
             <div className="text-2xl font-black text-neutral-100">PACKS</div>
           </div>
         </div>

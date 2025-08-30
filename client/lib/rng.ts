@@ -18,7 +18,10 @@ export type Player = {
 
 export type PackType = "Bronze" | "Silver" | "Gold";
 
-export const PACK_DEFS: Record<PackType, { price: number; odds: Record<Tier, number> }> = {
+export const PACK_DEFS: Record<
+  PackType,
+  { price: number; odds: Record<Tier, number> }
+> = {
   Bronze: {
     price: 100,
     odds: { Common: 70, Rare: 25, Epic: 4.5, Legend: 0.5 },
@@ -40,7 +43,9 @@ export const DUPLICATE_CONVERT_COINS: Record<Tier, number> = {
   Legend: 300,
 };
 
-export function weightedRandom<T extends string | number>(weights: Record<T, number>): T {
+export function weightedRandom<T extends string | number>(
+  weights: Record<T, number>,
+): T {
   const entries = Object.entries(weights) as [T, number][];
   const total = entries.reduce((s, [, w]) => s + w, 0);
   const r = Math.random() * total;

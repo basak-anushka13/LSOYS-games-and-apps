@@ -1,6 +1,12 @@
 import React, { useEffect, useRef } from "react";
 
-export function Confetti({ fire, onDone }: { fire: boolean; onDone?: () => void }) {
+export function Confetti({
+  fire,
+  onDone,
+}: {
+  fire: boolean;
+  onDone?: () => void;
+}) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -26,7 +32,7 @@ export function Confetti({ fire, onDone }: { fire: boolean; onDone?: () => void 
       r: 2 + Math.random() * 3,
       color: `hsl(${Math.floor(Math.random() * 360)},90%,60%)`,
       rot: Math.random() * Math.PI,
-      vr: (-0.05 + Math.random() * 0.1),
+      vr: -0.05 + Math.random() * 0.1,
     }));
 
     const draw = (now: number) => {
@@ -61,5 +67,10 @@ export function Confetti({ fire, onDone }: { fire: boolean; onDone?: () => void 
     };
   }, [fire, onDone]);
 
-  return <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-50" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="pointer-events-none fixed inset-0 z-50"
+    />
+  );
 }
