@@ -43,6 +43,8 @@ function HomeInner() {
   const [revealed, setRevealed] = useState(0);
   const [summaryOpen, setSummaryOpen] = useState(false);
   const [fireConfetti, setFireConfetti] = useState(false);
+  const [prePack, setPrePack] = useState<null | PackType>(null);
+  const [spark, setSpark] = useState(false);
 
   const hasRare = useMemo(
     () =>
