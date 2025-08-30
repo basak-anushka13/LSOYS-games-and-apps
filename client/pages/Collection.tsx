@@ -38,7 +38,7 @@ export default function Collection() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#0b1220] via-[#0b1220] to-[#020617] text-white">
-      <div className="absolute inset-0 -z-0 opacity-40 bg-[radial-gradient(circle_at_20%_10%,#1e293b_0%,transparent_35%),radial-gradient(circle_at_80%_10%,#7c3aed_0%,transparent_30%),radial-gradient(circle_at_50%_80%,#f59e0b_0%,transparent_25%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 bg-[radial-gradient(circle_at_20%_10%,#1e293b_0%,transparent_35%),radial-gradient(circle_at_80%_10%,#7c3aed_0%,transparent_30%),radial-gradient(circle_at_50%_80%,#f59e0b_0%,transparent_25%)]" />
       <div className="container mx-auto px-4 py-10">
         <h1 className="text-3xl font-extrabold">My Collection</h1>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-4 gap-3">
