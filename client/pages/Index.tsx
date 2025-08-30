@@ -101,14 +101,27 @@ function HomeInner() {
   }, [opening, hasRare, muted]);
 
   const handleOpen = (type: PackType) => {
-    const res = openPack(type);
-    if (!res) {
+    const price = PACK_DEFS[type].price;
+    if (coins < price) {
       import("sonner").then(({ toast }) => toast.error("Not enough coins"));
       return;
     }
-    setOpening(res);
+    setPrePack(type);
     setSummaryOpen(false);
     setFireConfetti(false);
+    setSpark(true);
+    if (!muted) {
+      const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const o = ctx.createOscillator(); const g = ctx.createGain();
+      o.type = "triangle"; o.frequency.value = 200; g.gain.value = 0.05; o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.2);
+      setTimeout(() => { const o2 = ctx.createOscillator(); const g2 = ctx.createGain(); o2.type = "sine"; o2.frequency.value = 1200; g2.gain.value = 0.03; o2.connect(g2); g2.connect(ctx.destination); o2.start(); o2.stop(ctx.currentTime + 0.08); }, 160);
+    }
+    setTimeout(() => {
+      const res = openPack(type);
+      if (res) setOpening(res);
+      setPrePack(null);
+      setSpark(false);
+    }, 900);
   };
 
   return (
