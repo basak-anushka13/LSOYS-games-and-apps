@@ -28,11 +28,11 @@ export default function Collection() {
     if (tier !== "All" && p.tier !== tier) return false;
     if (role !== "All" && p.role !== role) return false;
     if (team !== "All" && p.team !== team) return false;
-    if (
-      q &&
-      !`${p.name} ${p.team} ${p.role}`.toLowerCase().includes(q.toLowerCase())
-    )
-      return false;
+    const query = q.trim().toLowerCase();
+    if (query) {
+      const hay = `${p.name} ${p.team} ${p.role} ${p.tier} ${p.rating}`.toLowerCase();
+      if (!hay.includes(query)) return false;
+    }
     return true;
   });
 
