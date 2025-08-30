@@ -137,9 +137,5 @@ function HomeInner() {
 }
 
 export default function Index() {
-  return (
-    <GameProvider>
-      <HomeInner />
-    </GameProvider>
-  );
+  return <HomeInner />;
 }
