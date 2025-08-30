@@ -102,6 +102,10 @@ function HomeInner() {
 
         {opening && (
           <div className="fixed inset-0 z-40 bg-black/80 backdrop-blur flex items-center justify-center">
+            <div className="absolute top-6 right-6 flex gap-2">
+              <Button variant="secondary" onClick={() => setRevealed(5)}>Reveal All</Button>
+              <Button onClick={() => { setRevealed(5); setSummaryOpen(true); }}>Skip</Button>
+            </div>
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
               {opening.cards.map((c, idx) => (
                 <PlayerCard key={idx} player={c.player} revealed={idx < revealed} rarePulse={c.player.tier === "Epic" || c.player.tier === "Legend"} />
