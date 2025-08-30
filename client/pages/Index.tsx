@@ -144,7 +144,7 @@ function HomeInner() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#0b1220] via-[#0b1220] to-[#020617] text-white">
-      <div className="absolute inset-0 -z-0 opacity-40 bg-[radial-gradient(circle_at_20%_10%,#1e293b_0%,transparent_35%),radial-gradient(circle_at_80%_10%,#7c3aed_0%,transparent_30%),radial-gradient(circle_at_50%_80%,#f59e0b_0%,transparent_25%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 bg-[radial-gradient(circle_at_20%_10%,#1e293b_0%,transparent_35%),radial-gradient(circle_at_80%_10%,#7c3aed_0%,transparent_30%),radial-gradient(circle_at_50%_80%,#f59e0b_0%,transparent_25%)]" />
       {fireConfetti && (
         <Confetti fire={true} onDone={() => setFireConfetti(false)} />
       )}
